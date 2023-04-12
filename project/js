@@ -1,0 +1,54 @@
+// Define variables for guest list, invitations, schedule, and budget
+let guestList = [];
+let invitations = [];
+let schedule = [];
+let budget = 0;
+
+// Function to add a guest to the guest list
+function addGuest(guest) {
+  guestList.push(guest);
+}
+
+// Function to remove a guest from the guest list
+function removeGuest(guest) {
+  const index = guestList.indexOf(guest);
+  if (index > -1) {
+    guestList.splice(index, 1);
+  }
+}
+
+// Function to send invitations to all guests
+function sendInvitations() {
+  guestList.forEach(guest => {
+    invitations.push({
+      guest: guest,
+      status: 'pending'
+    });
+  });
+}
+
+// Function to accept or decline an invitation
+function respondToInvitation(guest, status) {
+  const invitation = invitations.find(invitation => invitation.guest === guest);
+  if (invitation) {
+    invitation.status = status;
+  }
+}
+
+// Function to add an event to the schedule
+function addEvent(event) {
+  schedule.push(event);
+}
+
+// Function to remove an event from the schedule
+function removeEvent(event) {
+  const index = schedule.indexOf(event);
+  if (index > -1) {
+    schedule.splice(index, 1);
+  }
+}
+
+// Function to set the budget for the event
+function setBudget(amount) {
+  budget = amount;
+}
